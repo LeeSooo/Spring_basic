@@ -15,7 +15,7 @@ import java.util.Locale;
 
 // 년, 월, 일을 입력하면 요일을 알려주는 프로그램
 @Controller
-public class YoilTellerMVC {
+public class YoilTellerMVC2 {
 	// http://localhost/ch2/getYoilMVC?year=2021&month=10&day=1
 	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex) {
@@ -24,7 +24,7 @@ public class YoilTellerMVC {
 	}
 	
 	// 1. 입력
-	@RequestMapping("/getYoilMVC") 
+	@RequestMapping("/getYoilMVC2") 
 	public String main(@RequestParam(required = true)int year,
 			@RequestParam(required = true)int month, 
 			@RequestParam(required = true)int day,
