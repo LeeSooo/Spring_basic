@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.net.URLDecoder" %>
+
+<%@ page session="false" %>	<!-- 세션 낭비 방지 세션off -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +69,7 @@
 	</div>
         <input type="text" name="id" placeholder="이메일 입력" value="${cookie.id.value }"autofocus>
         <input type="password" name="pwd" placeholder="비밀번호">
+        <input type="hidden" name="toURL" value="${param.toURL}">
         <button>로그인</button>
         <div>
             <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "": "checked"} > 아이디 기억</label> |
