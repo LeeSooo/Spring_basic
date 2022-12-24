@@ -75,7 +75,7 @@
    <!--<form action="<c:url value="/register/save"/>" method="post" onsubmit="return formCheck(this)"> -->
    <form:form modelAttribute="user">
     <div class="title">Register</div>
-    <div id="msg" class="msg"><form:errors path="id"/>
+    <div id="msg" class="msg">< path="id"/>
     </div> 
     <label for="">아이디</label>
     <input class="input-field" type="text" name="id" placeholder="8~12자리의 영대소문자와 숫자 조합">
@@ -93,6 +93,7 @@
         <label><input type="checkbox" name="sns" value="facebook"/>페이스북</label>
         <label><input type="checkbox" name="sns" value="kakaotalk"/>카카오톡</label>
         <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
+        
     </div>
     <button>회원 가입</button>
    </form:form> 
