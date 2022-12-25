@@ -93,7 +93,6 @@
         <label><input type="checkbox" name="sns" value="facebook"/>페이스북</label>
         <label><input type="checkbox" name="sns" value="kakaotalk"/>카카오톡</label>
         <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
-        
     </div>
     <button>회원 가입</button>
    </form:form> 
