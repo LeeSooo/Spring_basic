@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class RequestInfo {
     @RequestMapping("/requestInfo")
-    //    public static void main(String[] args) {
     public void main(HttpServletRequest request) {
         System.out.println("request.getCharacterEncoding()="+request.getCharacterEncoding()); // 요청 내용의 인코딩
         System.out.println("request.getContentLength()="+request.getContentLength());  // 요청 내용의 길이. 알수 없을 때는 -1
@@ -35,24 +34,3 @@ public class RequestInfo {
         System.out.println("request.getRemotePort()="+request.getRemotePort()); // 원격 포트
     }
 }
-
-/* [실행결과] http://localhost:8080/ch2/requestInfo?year=2021&month=10&day=1 
-	request.getCharacterEncoding()=UTF-8
-	request.getContentLength()=-1
-	request.getContentType()=null
-	request.getMethod()=GET
-	request.getProtocol()=HTTP/1.1
-	request.getScheme()=http
-	request.getServerName()=localhost
-	request.getServerPort()=8080
-	request.getRequestURI()=http://localhost:8080/ch2/requestInfo
-	request.getRequestURI()=/ch2/requestInfo
-	request.getContextPath()=/ch2
-	request.getServletPath()=/requestInfo
-	request.getQueryString()=year=2021&month=10&day=1
-	request.getLocalName()=localhost
-	request.getLocalPort()=8080
-	request.getRemoteAddr()=0:0:0:0:0:0:0:1   <--- AWS에 배포(deploy)한 다음에 실행하면, 실제 ip주소를 확인할 수 있음.
-	request.getRemoteHost()=0:0:0:0:0:0:0:1   <--- AWS에 배포(deploy)한 다음에 실행하면, 실제 ip주소를 확인할 수 있음.
-	request.getRemotePort()=54855
-*/

@@ -19,13 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 import org.springframework.validation.support.BindingAwareModelMap;
 
-// @Controller + @RequestMapping 
+// @Controller + @RequestMapping
 @WebServlet("/myDispatcherServlet")  // http://localhost/ch2/myDispatcherServlet?year=2021&month=10&day=1
 public class MyDispatcherServlet extends HttpServlet {
-	// 고정 메소드(매개변수도 고정)
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// request.getParmeterMap 입력
 		Map    map = request.getParameterMap();
 		Model  model = null;
 		String viewName = "";
@@ -35,7 +33,6 @@ public class MyDispatcherServlet extends HttpServlet {
 			Object obj = clazz.newInstance();
 			
       			// 1. main메서드의 정보를 얻는다.
-				// getDeclaredMethod() 의 인자로 메소드의 파라미터 정보를 넘겨주면 일치하는 것을 찾아줍니다.
 			Method main = clazz.getDeclaredMethod("main", int.class, int.class, int.class, Model.class);
 			
       			// 2. main메서드의 매개변수 목록(paramArr)을 읽어서 메서드 호출에 사용할 인자 목록(argArr)을 만든다.

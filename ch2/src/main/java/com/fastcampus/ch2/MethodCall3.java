@@ -15,7 +15,7 @@ import org.springframework.validation.support.BindingAwareModelMap;
 
 public class MethodCall3 {
 	public static void main(String[] args) throws Exception{
-		// 1. 요청할 때 제공된 값 - request.getParmeterMap();
+		// 1. 요청할 때 제공된 값 - request.getParameterMap();
 		Map map = new HashMap();
 		map.put("year", "2021");
 		map.put("month", "10");
@@ -27,12 +27,10 @@ public class MethodCall3 {
 		
 		// YoilTellerMVC.main(int year, int month, int day, Model model)
 		Method main = clazz.getDeclaredMethod("main", int.class, int.class, int.class, Model.class);
-				
-		// 위의 메서드의 매개변수 목록을 가져온다.
-		Parameter[] paramArr = main.getParameters();
-		
-		// 매개변수 갯수와 같은 길이의 Object배열을 생성
-		Object[] argArr = new Object[main.getParameterCount()];
+//		String viewName = (String)main.invoke(obj, new Object[] { 2021, 10, 1, model }); // Reflection API를 이용한 호출	
+
+		Parameter[] paramArr = main.getParameters(); // main메서드의 매개변수 목록을 가져온다. 
+		Object[] argArr = new Object[main.getParameterCount()]; // 매개변수 갯수와 같은 길이의 Object배열을 생성 
 		
 		for(int i=0;i<paramArr.length;i++) {
 			String paramName = paramArr[i].getName();
@@ -43,7 +41,7 @@ public class MethodCall3 {
 			if(paramType==Model.class) {
 				argArr[i] = model = new BindingAwareModelMap(); 
 			} else if(value != null) {  // map에 paramName이 있으면,
-				// value와 parameter의 타입을 비교해서, '다르면 변환해서 저장'  
+				// value와 parameter의 타입을 비교해서, 다르면 변환해서 저장  
 				argArr[i] = convertTo(value, paramType);				
 			} 
 		}
@@ -61,8 +59,7 @@ public class MethodCall3 {
 		// 텍스트 파일을 이용한 rendering
 		render(model, viewName);			
 	} // main
-
-	// value타입을 type타입으로 변환.
+	
 	private static Object convertTo(Object value, Class type) {
 		if(type==null || value==null || type.isInstance(value)) // 타입이 같으면 그대로 반환 
 			return value;
@@ -103,21 +100,3 @@ public class MethodCall3 {
 		System.out.println(result);
 	}
 }
-
-/* [실행결과] 
-paramArr=[int year, int month, int day, org.springframework.ui.Model model]
-argArr=[2021, 10, 1, {}]
-viewName=yoil
-[after] model={year=2021, month=10, day=1, yoil=금}
-<%@ page contentType="text/html;charset=utf-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
-<head>
-	<title>YoilTellerMVC</title>
-</head>
-<body>
-<h1>2021년 10월 1일은 금요일입니다.</h1>
-</body>
-</html>
-*/

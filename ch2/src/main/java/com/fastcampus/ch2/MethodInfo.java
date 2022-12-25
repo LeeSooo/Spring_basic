@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 public class MethodInfo {
 	public static void main(String[] args) throws Exception{
 
-		// 1. YoilTeller클래스의 객체를 생성
+		// 1. YoilTeller클래스의 객체를 생성 
 		Class clazz = Class.forName("com.fastcampus.ch2.YoilTellerMVC");
 		Object obj = clazz.newInstance();
 		
@@ -15,19 +15,17 @@ public class MethodInfo {
 		Method[] methodArr = clazz.getDeclaredMethods();
 		
 		for(Method m : methodArr) {
-			String name = m.getName();	// 메서드의 이름
-			Parameter[] paramArr = m.getParameters();	// 매개변수 목록
+			String name = m.getName(); // 메서드의 이름 
+			Parameter[] paramArr = m.getParameters(); // 매개변수 목록 
 //			Class[] paramTypeArr = m.getParameterTypes();
-			Class returnType = m.getReturnType();		// 메서드의 반환타입
+			Class returnType = m.getReturnType(); // 반환 타입 
 			
 			StringJoiner paramList = new StringJoiner(", ", "(", ")");
 			
-			// 매서드의 매개변수가 여러 개로 존재
 			for(Parameter param : paramArr) {
 				String paramName = param.getName();
 				Class  paramType = param.getType();
 				
-				// StringJoiner 클래스 객체를 이용하여 결과 출력.
 				paramList.add(paramType.getName() + " " + paramName);
 			}
 			
@@ -35,8 +33,3 @@ public class MethodInfo {
 		}
 	} // main
 }
-
-/* [실행결과]
-java.lang.String main(java.lang.String year, java.lang.String month, java.lang.String day, org.springframework.ui.Model model)
-boolean isValid(int year, int month, int day)
-*/

@@ -24,7 +24,7 @@ public class PerformanceFilter implements Filter {
 			throws IOException, ServletException {
 		// 1. 전처리 작업
 		long startTime = System.currentTimeMillis();
-
+		
 		// 2. 서블릿 또는 다음 필터를 호출
 		chain.doFilter(request, response); 
 		
@@ -32,8 +32,7 @@ public class PerformanceFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		String referer = req.getHeader("referer");
 		String method = req.getMethod();
-		
-		System.out.print("[" + referer +"] -> " + method + "[" + req.getRequestURI()+"]");
+		System.out.print("["+referer+"] -> "+ method+ "["+req.getRequestURI()+"]");
 		System.out.println(" 소요시간="+(System.currentTimeMillis()-startTime)+"ms");
 	}
 
@@ -41,4 +40,5 @@ public class PerformanceFilter implements Filter {
 	public void destroy() {
 		// 정리 작업
 	}
+
 }

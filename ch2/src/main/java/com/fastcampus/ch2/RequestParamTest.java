@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RequestParamTest {
-	// 예외처리
 	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex) {
 		return "yoilError";
 	}
-	
 	
 	@RequestMapping("/requestParam")
 	public String main(HttpServletRequest request) {

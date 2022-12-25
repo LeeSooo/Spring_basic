@@ -6,34 +6,29 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
-
 class ModelController {
 	public String main(HashMap map) {
-		// 작업 결과를 map에 저장
+		// 작업 결과를 map에 저장 
 		map.put("id", "asdf");
 		map.put("pwd", "1111");
 		
-		return "txtView1";	// 뷰 이름을 반환
+		return "txtView1"; // 뷰이름을 반환 
 	}
 }
 
 public class MethodCall {
 	public static void main(String[] args) throws Exception{
-		// 1. map 생성
 		HashMap map = new HashMap();
 		System.out.println("before:"+map);
 
-		// 2. mc 객체의 map에 호출.
 		ModelController mc = new ModelController();
-		String viewName = mc.main(map);	
+		String viewName = mc.main(map);
 		
 		System.out.println("after :"+map);
 		
-		// 3. 데이터와 뷰 이름을 render함수로 전송.
 		render(map, viewName);
 	}
 	
-	// 3. 데이터와 뷰 이름을 전송 받음.
 	static void render(HashMap map, String viewName) throws IOException {
 		String result = "";
 		
@@ -58,19 +53,3 @@ public class MethodCall {
 	}
 }
 
-/*
-[txtView1.txt]
-id=${id}, pwd=${pwd}
-
-[txtView2.txt]
-id:${id}
-pwd:${pwd}
-
-
-
-[실행결과]
-before:{}
-after :{id=asdf, pwd=1111}
-[txtView2.txt]
-id:asdf
-pwd:1111*/

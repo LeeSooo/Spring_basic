@@ -1,35 +1,14 @@
 package com.fastcampus.ch2;
 
-import java.util.Arrays;
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class User {
 	private String id;
 	private String pwd;
 	private String name;
 	private String email;
-	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date birth;
-	
-	private String[] sns;
-	private String[] hobby;
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", pw=" + pwd + ", name=" + name + ", email=" + email + ", "
-				+ "birth=" + birth + ", hobby=" + Arrays.toString(hobby) + ", sns=" + Arrays.toString(sns) +"]";
-	}
+	private String birth;
+	private String sns;
 	public String getId() {
 		return id;
-	}
-	public String[] getHobby() {
-		return hobby;
-	}
-	public void setHobby(String[] hobby) {
-		this.hobby = hobby;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -52,16 +31,23 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public String[] getSns() {
+	public String getSns() {
 		return sns;
 	}
-	public void setSns(String[] sns) {
+	public void setSns(String sns) {
 		this.sns = sns;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", birth=" + birth + ", sns="
+				+ sns + "]";
+	}
+	
+	
 }
